@@ -24,16 +24,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         await Task.Run(() => _dbSet.Remove(entity));
     }
 
-    public async Task<List<T>> ExecuteMultipleResultsStoredProcAsync(string storedProcName, params string[] parameters)
-    {
-        return await _dbSet.FromSqlRaw(storedProcName, parameters).ToListAsync();
-    }
-
-    public async Task<T?> ExecuteSingleResultStoredProcAsync(string storedProcName, params string[] parameters)
-    {
-        return await _dbSet.FromSqlRaw(storedProcName, parameters).FirstOrDefaultAsync();
-    }
-
     public async Task<T?> GetByIdAsync(int id)
     {
         return await _dbSet.FindAsync(id);

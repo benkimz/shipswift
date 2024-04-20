@@ -2,7 +2,7 @@
 
 namespace ShipSwift.CoreBusiness.Models;
 
-public partial class Shipper
+public class Shipper
 {
     public int ShipperId { get; set; }
     [MaxLength(100)]

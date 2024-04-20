@@ -12,5 +12,5 @@ public class GetShipperShipmentDetailsQueryHandler : IRequestHandler<GetShipperS
         _shipperRepository = shipperRepository;
     }
 
-    public async Task<Shipper?> Handle(GetShipperShipmentDetailsQuery request, CancellationToken cancellationToken) => await _shipperRepository.GetShipperShipmentDetailsAsync(request.shipper_id);
+    public async Task<Shipper?> Handle(GetShipperShipmentDetailsQuery request, CancellationToken cancellationToken) => await _shipperRepository.GetShipperShipmentDetailsAsync(request.shipperId);
 }

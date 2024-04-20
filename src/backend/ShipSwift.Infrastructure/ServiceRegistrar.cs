@@ -7,6 +7,7 @@ public static class ServiceRegistrar
 {
     public static void AddApplicationService(this IServiceCollection services)
     {
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddTransient<IShippersRepository, ShippersRepository>();
     }
