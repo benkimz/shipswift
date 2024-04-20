@@ -3,14 +3,14 @@ using ShipSwift.CoreBusiness.Models;
 
 namespace ShipSwift.CoreBusiness;
 
-public class GetShipperShipmentDetailsQueryHandler : IRequestHandler<GetShipperShipmentDetailsQuery, Shipper>
+public class GetShipperShipmentDetailsQueryHandler : IRequestHandler<GetShipperShipmentDetailsQuery, Shipper?>
 {
-    private readonly IGenericRepository<Shipper> _shipperRepository;
+    private readonly IShippersRepository _shipperRepository;
 
-    public GetShipperShipmentDetailsQueryHandler(IGenericRepository<Shipper> shipperRepository)
+    public GetShipperShipmentDetailsQueryHandler(IShippersRepository shipperRepository)
     {
         _shipperRepository = shipperRepository;
     }
 
-    public async Task<Shipper> Handle(GetShipperShipmentDetailsQuery request, CancellationToken cancellationToken) => await _shipperRepository.ExecuteSingleResultStoredProcAsync("Shipper_Shipment_Details", request.shipper_id.ToString());
+    public async Task<Shipper?> Handle(GetShipperShipmentDetailsQuery request, CancellationToken cancellationToken) => await _shipperRepository.GetShipperShipmentDetailsAsync(request.shipper_id);
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipSwift.CoreBusiness", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipSwift.Infrastructure", "ShipSwift.Infrastructure\ShipSwift.Infrastructure.csproj", "{9B95652C-F392-4558-B564-CAC2AF4DF98E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipSwift.Api", "..\frontend\api\ShipSwift.Api\ShipSwift.Api.csproj", "{5A8FE112-1B47-4F8C-8ACB-0D570CE517F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9B95652C-F392-4558-B564-CAC2AF4DF98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B95652C-F392-4558-B564-CAC2AF4DF98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B95652C-F392-4558-B564-CAC2AF4DF98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8FE112-1B47-4F8C-8ACB-0D570CE517F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8FE112-1B47-4F8C-8ACB-0D570CE517F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8FE112-1B47-4F8C-8ACB-0D570CE517F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8FE112-1B47-4F8C-8ACB-0D570CE517F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -5,12 +5,12 @@ namespace ShipSwift.CoreBusiness;
 
 public class GetAllShippersQueryHandler : IRequestHandler<GetAllShippersQuery, List<Shipper>>
 {
-    private readonly IGenericRepository<Shipper> _shipperRepository;
+    private readonly IShippersRepository _shipperRepository;
 
-    public GetAllShippersQueryHandler(IGenericRepository<Shipper> shipperRepository)
+    public GetAllShippersQueryHandler(IShippersRepository shipperRepository)
     {
         _shipperRepository = shipperRepository;
     }
 
-    public async Task<List<Shipper>> Handle(GetAllShippersQuery request, CancellationToken cancellationToken) => await _shipperRepository.ListAsync();
+    public async Task<List<Shipper>> Handle(GetAllShippersQuery request, CancellationToken cancellationToken) => await _shipperRepository.GetAllShippersAsync();
 }
