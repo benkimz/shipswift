@@ -8,16 +8,16 @@ namespace ShipSwift.Api;
 [Route("api/shippers")]
 [Consumes("application/json")]
 [Produces("application/json")]
-public class ShippersController : ControllerBase
+public class ShipSwiftController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public ShippersController(IMediator mediator)
+    public ShipSwiftController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpGet("/all")]
+    [HttpGet("/shippers")]
     public async Task<ActionResult> Get()
     {
         var shippers = await _mediator.Send(new GetAllShippersQuery());
@@ -29,5 +29,19 @@ public class ShippersController : ControllerBase
     {
         var shipper = await _mediator.Send(new GetShipperShipmentDetailsQuery(shipperId));
         return shipper is null ? NotFound() : Ok(shipper);
+    }
+
+    [HttpGet("/quotes/random")]
+    public async Task<ActionResult> GetRandomQuote()
+    {
+        var quote = await _mediator.Send(new GetRandomQuoteQuery());
+        return quote is null ? NotFound() : Ok(quote);
+    }
+
+    [HttpGet("/quotes/{author}")]
+    public async Task<ActionResult> GetGroupedQuotesByAuthor(string author, int limit = 30)
+    {
+        var quotes = await _mediator.Send(new GetGroupedQuotesByAuthorQuery(author, limit));
+        return quotes is null ? NotFound() : Ok(quotes);
     }
 }
