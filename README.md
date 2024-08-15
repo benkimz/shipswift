@@ -43,3 +43,5 @@ cd shipswift/src/
    ```
 
 And that's it! ShipSwift is now up and running.
+
+![Demo Image](https://raw.githubusercontent.com/benkimz/shipswift/main/demo.png)
