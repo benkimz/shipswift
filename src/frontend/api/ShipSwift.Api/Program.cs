@@ -1,3 +1,4 @@
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using ShipSwift.Infrastructure;
 
@@ -12,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB"), b => b.MigrationsAssembly("ShipSWift.Api"));
+    options.UseSqlite(new SqliteConnectionStringBuilder("Data Source=sqlite.db").ConnectionString, b => b.MigrationsAssembly(typeof(Program).Assembly.GetName().Name));
 });
 
 builder.Services.AddApplicationService();

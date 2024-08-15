@@ -22,21 +22,11 @@ public class ShippersRepository : IShippersRepository
 
     public async Task<Shipper?> GetShipperShipmentDetailsAsync(int shipperId)
     {
-        var query = $"EXECUTE Shipper_Shipment_Details {shipperId}";
         var shipper = _context.Shippers
-            .FromSqlRaw(query)
-            .ToList();
+            .Include(s => s.Shipments).ThenInclude(s => s.Carrier)
+            .Include(s => s.Shipments).ThenInclude(s => s.ShipmentRate)
+            .Where(s => s.ShipperId == shipperId).FirstOrDefault();
 
-        shipper.ForEach(s =>
-        {
-            _context.Entry(s)
-                .Collection(b => b.Shipments)
-                .Query()
-                .Include(b => b.Carrier)
-                .Include(b => b.ShipmentRate)
-                .Load();
-        });
-
-        return await Task.FromResult(shipper.FirstOrDefault());
+        return await Task.FromResult(shipper);
     }
 }
